@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Food Corner</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0;font-family:Arial}
+body{background:#fff8f0;color:#333}
+
+header{
+background:#c0392b;color:white;padding:18px 8%;
+display:flex;justify-content:space-between;align-items:center
+}
+nav a{color:white;text-decoration:none;margin-left:18px}
+
+.hero{
+background:linear-gradient(#8b1e18cc,#8b1e18cc),
+url("https://images.unsplash.com/photo-1513104890138-7c749659a591");
+background-size:cover;background-position:center;
+color:white;text-align:center;padding:80px 20px
+}
+.hero h1{font-size:42px;margin-bottom:10px}
+
+section{max-width:1050px;margin:auto;padding:45px 20px}
+h2{text-align:center;color:#c0392b;margin-bottom:25px}
+
+.about,.box{
+background:white;padding:25px;border-radius:8px;
+box-shadow:0 3px 12px #0002
+}
+
+.categories,.items{
+display:flex;gap:18px;flex-wrap:wrap
+}
+
+.card{
+background:white;padding:25px;flex:1;min-width:180px;
+text-align:center;border-radius:8px;
+box-shadow:0 3px 12px #0002;
+cursor:pointer;transition:.3s
+}
+.card:hover{transform:translateY(-5px);border:2px solid #c0392b}
+.card h3{color:#c0392b;margin-bottom:8px}
+
+.item{
+background:white;padding:18px;min-width:210px;
+flex:1;border-radius:8px;
+box-shadow:0 2px 8px #0002
+}
+.item h3{color:#c0392b}
+.item button,.order button{
+background:#c0392b;color:white;border:0;
+padding:9px 15px;margin-top:10px;
+border-radius:5px;cursor:pointer
+}
+
+#items{margin-top:25px}
+
+.order{
+background:white;padding:25px;
+border-radius:8px;
+box-shadow:0 3px 12px #0002
+}
+.order input,.order textarea{
+width:100%;padding:10px;margin:7px 0;
+border:1px solid #ccc;border-radius:5px
+}
+
+footer{
+background:#8b1e18;color:white;text-align:center;padding:20px
+}
+
+@media(max-width:650px){
+header{flex-direction:column;gap:12px}
+nav a{margin:5px}
+.hero h1{font-size:30px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div>
+<h2>🍴 Food Corner</h2>
+<small>Delicious Food | Great Taste | Happy Moments</small>
+</div>
+
+<nav>
+<a href="#home">Home</a>
+<a href="#menu">Menu</a>
+<a href="#about">About</a>
+<a href="#order">Order</a>
+</nav>
+</header>
+
+
+<div class="hero" id="home">
+<h1>Welcome to Food Corner</h1>
+<p>Fresh Food • Great Taste • Happy Moments</p>
+</div>
+
+
+<section id="about">
+<h2>About Food Corner</h2>
+<div class="about">
+Welcome to Food Corner Restaurant. We serve fresh,
+delicious and hygienic food for our customers.
+</div>
+</section>
+
+
+<section id="menu">
+
+<h2>Our Menu</h2>
+
+<div class="categories">
+
+<div class="card" onclick="menu('Pizza')">
+<h3>🍕 Pizza</h3>
+<p>Different varieties of Pizza</p>
+</div>
+
+<div class="card" onclick="menu('Burger')">
+<h3>🍔 Burger</h3>
+<p>Different varieties of Burger</p>
+</div>
+
+<div class="card" onclick="menu('Indian')">
+<h3>🥘 Indian Food</h3>
+<p>Delicious Indian dishes</p>
+</div>
+
+<div class="card" onclick="menu('Beverages')">
+<h3>🥤 Beverages</h3>
+<p>Refreshing drinks</p>
+</div>
+
+</div>
+
+
+<div id="items"></div>
+
+</section>
+
+
+<section id="order">
+
+<h2>Place Your Order</h2>
+
+<div class="order">
+
+<p id="cart">Your cart is empty.</p>
+
+<input type="text" id="name" placeholder="Your Name">
+
+<input type="text" id="phone" placeholder="Phone Number">
+
+<textarea id="address" placeholder="Delivery Address"></textarea>
+
+<button onclick="placeOrder()">Place Order</button>
+
+</div>
+
+</section>
+
+
+<footer>
+© 2026 Food Corner Restaurant | All Rights Reserved
+</footer>
+
+
+<script>
+
+let cart=[];
+
+const foods={
+
+Pizza:[
+["Margherita Pizza",199],
+["Farmhouse Pizza",249],
+["Paneer Pizza",269],
+["Cheese Burst Pizza",299]
+],
+
+Burger:[
+["Veg Burger",120],
+["Cheese Burger",150],
+["Aloo Tikki Burger",100],
+["Paneer Burger",160]
+],
+
+Indian:[
+["Paneer Tikka",180],
+["Chilli Paneer",190],
+["Veg Manchurian",170],
+["Veg Momos",120]
+],
+
+Beverages:[
+["Cold Coffee",100],
+["Fresh Lime",80],
+["Masala Coke",70],
+["Mango Shake",120]
+]
+
+};
+
+
+function menu(type){
+
+let html="<div class='box'><h2>"+type+" Menu</h2><div class='items'>";
+
+foods[type].forEach(function(item){
+
+html+=`
+<div class="item">
+<h3>${item[0]}</h3>
+<p>₹${item[1]}</p>
+<button onclick="add('${item[0]}',${item[1]})">
+Add to Order
+</button>
+</div>`;
+
+});
+
+html+="</div></div>";
+
+document.getElementById("items").innerHTML=html;
+
+}
+
+
+function add(name,price){
+
+cart.push({name:name,price:price});
+
+let total=0;
+
+cart.forEach(function(item){
+total+=item.price;
+});
+
+document.getElementById("cart").innerHTML=
+"<b>Selected Items:</b><br>"+
+cart.map(x=>x.name+" - ₹"+x.price).join("<br>")+
+"<br><br><b>Total: ₹"+total+"</b>";
+
+}
+function placeOrder(){
+
+let name=document.getElementById("name").value;
+let phone=document.getElementById("phone").value;
+let address=document.getElementById("address").value;
+
+if(!name || !phone || !address || cart.length==0){
+
+alert("Please select food and fill all details.");
+
+return;
+
+}
+
+alert(
+"Order Placed Successfully!\\n\\n"+
+"Thank you "+name+" for ordering from Food Corner."
+);
+
+}
+
+</script>
+
+</body>
+</html>

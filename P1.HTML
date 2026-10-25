@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ABC College</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial;
+        }
+
+        body {
+            background: #f4f6f8;
+            color: #333;
+        }
+
+        header {
+            background: #123b6d;
+            color: white;
+            padding: 18px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h2 {
+            margin-bottom: 3px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+        }
+
+        nav a:hover {
+            color: #ffd166;
+        }
+
+        .hero {
+            background: linear-gradient(#123b6dcc,#123b6dcc),
+            url("https://images.unsplash.com/photo-1562774053-701939374585");
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 90px 20px;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 12px;
+        }
+
+        .hero p {
+            font-size: 17px;
+        }
+
+        section {
+            max-width: 1100px;
+            margin: auto;
+            padding: 50px 20px;
+        }
+
+        section h2 {
+            text-align: center;
+            color: #123b6d;
+            margin-bottom: 25px;
+        }
+
+        .about {
+            text-align: center;
+            line-height: 1.7;
+        }
+
+        .cards {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            flex: 1;
+            min-width: 220px;
+            border-radius: 8px;
+            box-shadow: 0 3px 12px #0002;
+        }
+
+        .card h3 {
+            color: #123b6d;
+            margin-bottom: 10px;
+        }
+
+        .news {
+            background: white;
+        }
+
+        footer {
+            background: #123b6d;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        @media(max-width:700px) {
+            header {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            nav a {
+                margin: 5px;
+            }
+
+            .hero h1 {
+                font-size: 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div>
+        <h2>ABC College</h2>
+        <small>Knowledge | Innovation | Excellence</small>
+    </div>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#courses">Courses</a>
+        <a href="#news">News</a>
+        <a href="#contact">Contact</a>
+    </nav>
+</header>
+
+
+<div class="hero" id="home">
+    <h1>ABC College of Technology</h1>
+    <p>Building Knowledge. Shaping Futures.</p>
+</div>
+
+
+<section id="about">
+    <h2>Welcome to ABC College</h2>
+
+    <div class="about">
+        <p>
+            ABC College of Technology is a leading institution
+            providing quality education in Computer Science,
+            Information Technology and Management.
+        </p>
+    </div>
+</section>
+
+
+<section id="courses">
+    <h2>Our Courses</h2>
+
+    <div class="cards">
+
+        <div class="card">
+            <h3>BCA</h3>
+            <p>Bachelor of Computer Applications</p>
+        </div>
+
+        <div class="card">
+            <h3>MCA</h3>
+            <p>Master of Computer Applications</p>
+        </div>
+
+        <div class="card">
+            <h3>B.Tech</h3>
+            <p>B.Tech Computer Science</p>
+        </div>
+
+        <div class="card">
+            <h3>M.Tech</h3>
+            <p>M.Tech Computer Science</p>
+        </div>
+
+    </div>
+</section>
+
+
+<section class="news" id="news">
+    <h2>Latest News</h2>
+
+    <div class="cards">
+
+        <div class="card">
+            <h3>Admission Open</h3>
+            <p>Admission open for 2026-27.</p>
+        </div>
+
+        <div class="card">
+            <h3>Technical Fest</h3>
+            <p>Annual Technical Fest will be held in September.</p>
+        </div>
+
+        <div class="card">
+            <h3>Internship</h3>
+            <p>Registration open for Internship Program.</p>
+        </div>
+
+    </div>
+</section>
+
+
+<section id="contact">
+    <h2>Contact Us</h2>
+
+    <div class="about">
+        <p>ABC College of Technology, Jaipur, Rajasthan</p>
+        <p>Email: info@abccollege.edu | Phone: +91 XXXXX XXXXX</p>
+    </div>
+</section>
+
+
+<footer>
+    © 2026 ABC College of Technology
+</footer>
+
+</body>
+</html>

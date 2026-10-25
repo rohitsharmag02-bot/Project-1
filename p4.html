@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>ABC Online Book Store</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0;font-family:Arial}
+body{background:#f5f7fb;color:#333}
+
+header{
+background:#263b80;color:white;padding:18px 8%;
+display:flex;justify-content:space-between;align-items:center
+}
+
+nav a{
+color:white;text-decoration:none;margin-left:18px
+}
+
+nav a:hover{color:#ffd166}
+
+.hero{
+background:linear-gradient(#263b80dd,#263b80dd),
+url("https://images.unsplash.com/photo-1507842217343-583bb7270b66");
+background-size:cover;background-position:center;
+color:white;text-align:center;padding:85px 20px
+}
+
+.hero h1{font-size:42px;margin-bottom:10px}
+
+section{max-width:1100px;margin:auto;padding:45px 20px}
+
+h2{text-align:center;color:#263b80;margin-bottom:25px}
+
+.about,.cart{
+background:white;padding:25px;border-radius:8px;
+box-shadow:0 3px 12px #0002
+}
+.categories,.books{
+display:flex;gap:18px;flex-wrap:wrap
+}
+.card{
+background:white;padding:25px;flex:1;min-width:170px;
+text-align:center;border-radius:8px;
+box-shadow:0 3px 12px #0002;
+cursor:pointer;transition:.3s
+}
+.card:hover{
+transform:translateY(-5px);
+border:2px solid #263b80
+}
+.card h3{color:#263b80;margin-bottom:8px}
+.book{
+background:white;padding:20px;flex:1;
+min-width:220px;border-radius:8px;
+box-shadow:0 3px 12px #0002
+}
+.book h3{color:#263b80;margin-bottom:8px}
+.price{
+font-weight:bold;
+margin-top:8px
+}
+button{
+background:#263b80;color:white;border:0;
+padding:9px 15px;margin-top:12px;
+border-radius:5px;cursor:pointer
+}
+
+button:hover{background:#18285e}
+#books{margin-top:25px}
+.cart{margin-top:20px;line-height:1.8}
+.offer{
+background:#fff3cd;
+padding:25px;
+text-align:center;
+border-radius:8px
+}
+
+.offer h2{color:#a66b00}
+
+input{
+width:100%;
+padding:10px;
+margin:6px 0;
+border:1px solid #ccc;
+border-radius:5px
+}
+
+footer{
+background:#18285e;color:white;
+text-align:center;padding:20px
+}
+
+@media(max-width:650px){
+header{flex-direction:column;gap:12px}
+nav a{margin:5px}
+.hero h1{font-size:30px}
+}
+</style>
+</head>
+
+
+<body>
+
+<header>
+
+<div>
+<h2>📚 ABC Book Store</h2>
+<small>Your Online Destination for Books</small>
+</div>
+
+<nav>
+<a href="#home">Home</a>
+<a href="#categories">Categories</a>
+<a href="#cart">Cart</a>
+<a href="#offers">Offers</a>
+</nav>
+
+</header>
+
+
+<div class="hero" id="home">
+
+<h1>ABC Online Book Store</h1>
+
+<p>Find Your Next Favourite Book</p>
+
+</div>
+<section>
+
+<h2>Welcome to ABC Online Book Store</h2>
+
+<div class="about">
+
+Find books from different categories including
+technology, programming, fiction, business and education.
+
+</div>
+
+</section>
+
+
+<section id="categories">
+
+<h2>Book Categories</h2>
+
+<div class="categories">
+
+<div class="card" onclick="show('Programming')">
+<h3>💻 Programming</h3>
+<p>Learn coding & development</p>
+</div>
+
+<div class="card" onclick="show('Computer Science')">
+<h3>🖥️ Computer Science</h3>
+<p>Technology & computing</p>
+</div>
+
+<div class="card" onclick="show('Business')">
+<h3>💼 Business</h3>
+<p>Business & management</p>
+</div>
+
+<div class="card" onclick="show('Fiction')">
+<h3>📖 Fiction</h3>
+<p>Stories & novels</p>
+</div>
+
+<div class="card" onclick="show('Competitive Exams')">
+<h3>🎓 Competitive Exams</h3>
+<p>Exam preparation books</p>
+</div>
+
+</div>
+<div id="books"></div>
+
+</section>
+<section id="cart">
+
+<h2>🛒 Your Cart</h2>
+
+<div class="cart" id="cartBox">
+Your cart is empty.
+</div>
+
+<br>
+
+<div class="cart">
+
+<input id="name" placeholder="Your Name">
+<input id="phone" placeholder="Phone Number">
+<button onclick="order()">Buy Now</button>
+
+</div>
+
+</section>
+
+<section id="offers">
+<div class="offer">
+<h2>🎁 Special Offer</h2>
+<p>
+Get <b>20% discount</b> on selected books.
+</p>
+
+</div>
+</section>
+
+<footer>
+
+© 2026 ABC Online Book Store | All Rights Reserved
+
+</footer>
+<script>
+
+let cart=[];
+
+const books={
+
+Programming:[
+["Python Programming","John Smith",450],
+["Java Programming","James Wilson",400],
+["Web Development","David Brown",500]
+],
+
+"Computer Science":[
+["Web Technology","David Brown",500],
+["Database Management","Robert Lee",550],
+["Computer Networks","Mark Taylor",480]
+],
+
+Business:[
+["Business Management","Robert Lee",450],
+["Marketing Basics","Peter Jones",350],
+["Entrepreneurship","John David",400]
+],
+
+Fiction:[
+["The Secret Garden","Frances Hodgson",300],
+["The Great Adventure","James Allen",350],
+["Mystery House","Robert King",280]
+],
+
+"Competitive Exams":[
+["General Knowledge","A. Sharma",300],
+["Reasoning Guide","R. Kumar",350],
+["Aptitude Practice","S. Verma",400]
+]
+
+};
+function show(category){
+
+let html=
+"<div class='about'><h2>"+category+
+" Books</h2><div class='books'>";
+
+books[category].forEach(function(b){
+
+html+=`
+<div class="book">
+
+<h3>${b[0]}</h3>
+
+<p>Author: ${b[1]}</p>
+
+<p class="price">₹${b[2]}</p>
+
+<button onclick="add('${b[0]}',${b[2]})">
+Add to Cart
+</button>
+
+</div>`;
+
+});
+
+html+="</div></div>";
+
+document.getElementById("books").innerHTML=html;
+
+}
+function add(name,price){
+
+cart.push({name:name,price:price});
+
+let total=0;
+
+cart.forEach(function(b){
+total+=b.price;
+});
+
+document.getElementById("cartBox").innerHTML=
+"<b>Selected Books:</b><br>"+
+cart.map(b=>b.name+" - ₹"+b.price).join("<br>")+
+"<br><br><b>Total: ₹"+total+"</b>";
+
+}
+function order(){
+
+let name=document.getElementById("name").value;
+let phone=document.getElementById("phone").value;
+
+if(!name || !phone || cart.length==0){
+
+alert("Please select a book and enter your details.");
+
+return;
+
+}
+
+alert(
+"Order placed successfully! 📚\n\n"+
+"Thank you "+name+" for shopping with ABC Book Store."
+);
+
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>City Care Hospital</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0;font-family:Arial}
+body{background:#f4f8f9;color:#333}
+header{background:#087f8c;color:white;padding:18px 8%;
+display:flex;justify-content:space-between;align-items:center}
+nav a{color:white;text-decoration:none;margin-left:18px}
+.hero{background:linear-gradient(#087f8dcc,#087f8dcc),
+url("https://images.unsplash.com/photo-1586773860418-d37222d8fce3");
+background-size:cover;background-position:center;color:white;text-align:center;padding:80px 20px}
+.hero h1{font-size:40px;margin-bottom:10px}
+section{max-width:1050px;margin:auto;padding:45px 20px}
+h2{text-align:center;color:#087f8c;margin-bottom:25px}
+.about,.details{background:white;padding:25px;text-align:center;
+border-radius:8px;box-shadow:0 3px 12px #0002}
+.cards{display:flex;gap:18px;flex-wrap:wrap}
+.card{background:white;padding:25px;flex:1;min-width:170px;
+text-align:center;border-radius:8px;box-shadow:0 3px 12px #0002;
+cursor:pointer;transition:.3s}
+.card:hover{transform:translateY(-5px);border:2px solid #087f8c}
+.card h3{color:#087f8c;margin-bottom:8px}
+.details{margin-top:25px;text-align:left;line-height:1.7}
+.details h3{color:#087f8c;margin-bottom:10px}
+.details li{margin-left:20px}
+.emergency{background:#fff1f1;border-left:5px solid #e63946;
+padding:25px;text-align:center;border-radius:5px}
+.emergency h2{color:#d62828}
+.number{font-size:24px;font-weight:bold;color:#d62828}
+footer{background:#075e66;color:white;text-align:center;padding:20px}
+
+@media(max-width:700px){
+header{flex-direction:column;gap:12px}
+nav a{margin:5px}
+.hero h1{font-size:30px}
+.cards{flex-direction:column}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div>
+        <h2>City Care Hospital</h2>
+        <small>Quality Healthcare for Everyone</small>
+    </div>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a>
+    </nav>
+</header>
+
+
+<div class="hero" id="home">
+    <h1>Welcome to City Care Hospital</h1>
+    <p>Quality Healthcare with Care & Compassion</p>
+</div>
+
+
+<section id="about">
+    <h2>About Our Hospital</h2>
+    <div class="about">
+        City Care Hospital provides modern healthcare facilities
+        with experienced doctors and trained medical staff.
+    </div>
+</section>
+
+
+<section id="services">
+    <h2>Our Departments</h2>
+
+    <div class="cards">
+
+        <div class="card" onclick="show('Cardiology')">
+            <h3>❤️ Cardiology</h3>
+            <p>Heart Care</p>
+        </div>
+
+        <div class="card" onclick="show('Neurology')">
+            <h3>🧠 Neurology</h3>
+            <p>Brain & Nerve Care</p>
+        </div>
+
+        <div class="card" onclick="show('Orthopedics')">
+            <h3>🦴 Orthopedics</h3>
+            <p>Bone & Joint Care</p>
+        </div>
+
+        <div class="card" onclick="show('Medicine')">
+            <h3>⚕️ General Medicine</h3>
+            <p>General Treatment</p>
+        </div>
+
+        <div class="card" onclick="show('Pediatrics')">
+            <h3>👶 Pediatrics</h3>
+            <p>Child Healthcare</p>
+        </div>
+
+    </div>
+
+    <div class="details" id="details">
+        <h3>Select a Department</h3>
+        <p>Click on a department to view its details.</p>
+    </div>
+</section>
+
+
+<section>
+    <div class="emergency">
+        <h2>Emergency Services</h2>
+        <p>Available 24 hours a day, 7 days a week.</p>
+        <br>
+        <p>Emergency Contact</p>
+        <div class="number">9876543210</div>
+    </div>
+</section>
+
+
+<section id="contact">
+    <h2>Contact Us</h2>
+
+    <div class="about">
+        <p>City Care Hospital</p>
+        <p>Available 24×7 for your healthcare needs</p>
+        <p>Emergency: <b>9876543210</b></p>
+    </div>
+</section>
+
+
+<footer>
+    © 2026 City Care Hospital | All Rights Reserved
+</footer>
+
+
+<script>
+const data = {
+    Cardiology:"Specialized heart care and treatment.",
+    Neurology:"Diagnosis and treatment of neurological conditions.",
+    Orthopedics:"Treatment for bones, joints and muscles.",
+    Medicine:"General medical consultation and treatment.",
+    Pediatrics:"Healthcare services specially for children."
+};
+
+function show(name){
+    document.getElementById("details").innerHTML =
+    `<h3>${name} Department</h3>
+     <p>${data[name]}</p>
+     <b>Services:</b>
+     <ul>
+       <li>Health Check-up</li>
+       <li>Doctor Consultation</li>
+       <li>Diagnosis & Treatment</li>
+       <li>Regular Follow-up</li>
+     </ul>`;
+}
+</script>
+
+</body>
+</html>
